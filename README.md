@@ -4,6 +4,9 @@ We use `PlatEMO v3.5` to conduct experimental studies. The problems and algorith
 
 The implementation of the BBOB test suite on PlatEMO can be found [here](https://github.com/EricZheng1024/BBOBxPlatEMO).
 
+---
+### TODO
+Fix the bug on line 281 of gMOEADGGRAW_EIE.m.
 
 ---
 
