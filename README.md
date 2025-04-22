@@ -1,12 +1,9 @@
-Code for "Enhanced Ideal Objective Vector Estimation for Evolutionary Multi-Objective Optimization" (Submitted to AIJ).
+Code for "Enhanced Ideal Objective Vector Estimation for Evolutionary Multi-Objective Optimization" (Submitted to IEEE TETCI).
 
 We use `PlatEMO v3.5` to conduct experimental studies. The problems and algorithms involved in the experiments are located in "PlatEMO\Problems\MOPs" and "PlatEMO\Algorithms\MOEAs", respectively. Files unrelated to the experiments have been removed from PlatEMO.
 
 The implementation of the BBOB test suite on PlatEMO can be found [here](https://github.com/EricZheng1024/BBOBxPlatEMO).
 
----
-### TODO
-Fix the bug on line 281 of gMOEADGGRAW_EIE.m.
 
 ---
 
