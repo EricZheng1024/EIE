@@ -1,4 +1,4 @@
-Code for "Enhanced Ideal Objective Vector Estimation for Evolutionary Multi-Objective Optimization" (Submitted to IEEE TETCI).
+Code for "Enhanced Ideal Objective Vector Estimation for Evolutionary Multi-Objective Optimization".
 
 We use `PlatEMO v3.5` to conduct experimental studies. The problems and algorithms involved in the experiments are located in "PlatEMO\Problems\MOPs" and "PlatEMO\Algorithms\MOEAs", respectively. Files unrelated to the experiments have been removed from PlatEMO.
 
