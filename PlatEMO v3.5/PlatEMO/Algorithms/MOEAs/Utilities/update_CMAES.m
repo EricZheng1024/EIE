@@ -1,6 +1,7 @@
 function [Sigma, exitflag] = update_CMAES(Sigma,X,lambda_def,flag_inj)
-%Update the parameters in CMA-ES
+% Update the parameters in CMA-ES
 % Remarks:
+%   The use of PSA requires modifying the original CMA-ES.
 %   "h_sigma" is more likely to be true during the later stages of optimization.
 %   "gen" in calculating "NoEffectAxis" is used for rotating indices.
 
@@ -19,7 +20,7 @@ function [Sigma, exitflag] = update_CMAES(Sigma,X,lambda_def,flag_inj)
     gamma_sigma_t = Sigma.PSA_buff.gamma_sigma_t;
     gamma_c_t = Sigma.PSA_buff.gamma_c_t;
 
-    % Calculate the CMA parameters
+    % Calculate the predefined parameters
     % Selection
     mu              = floor(Sigma.lambda/2);
     w               = log((Sigma.lambda+1)/2) - log(1:mu);
@@ -37,7 +38,7 @@ function [Sigma, exitflag] = update_CMAES(Sigma,X,lambda_def,flag_inj)
     d_sigma         = 1 + 2*max(0,sqrt((mu_eff-1)/(n+1))-1) + c_sigma;
     ENI             = sqrt(n)*(1-1/4/n+1/21/n^2);
     
-    % Update the CMA model
+    % Update the parameters
     % Selection and recombination
     y               = (X(1:mu,:)-Sigma.m)/Sigma.sigma;  % row vector
     flag_inj        = flag_inj(1:mu);
@@ -95,7 +96,7 @@ function [Sigma, exitflag] = update_CMAES(Sigma,X,lambda_def,flag_inj)
     ConditionCov    = false;
     TolXUp          = any(Sigma.sigma*sqrt(diagD) > 1e4*Sigma.sigma_0*sqrt(Sigma.diagD_0));
     ConditionNan    = isnan(Sigma.lambda) || any(isnan(Sigma.m)) || isnan(Sigma.sigma) || any(isnan(Sigma.C),'all') || any(isnan(Sigma.p_c)) || any(isnan(Sigma.p_sigma));
-
+    % Return exitflag
     if NoEffectAxis || NoEffectCoord || (TolFun && TolX)
         exitflag = -1;
     elseif ConditionCov || TolXUp || ConditionNan
@@ -109,7 +110,7 @@ end
 
 function [lmabda_r_t1, sigma_t1, PSA_buff] = PSA(m_t1, m_t, C_t, sigma_t, C_t1, sigma_t1, gamma_sigma_t1, gamma_c_t1, ...
     n, lambda_def, mu_eff, c_sigma, d_sigma, c_mu, c_c, c_1, ENI, w, X, PSA_buff)
-%Population size adaptation for CMA-ES
+% Population size adaptation for CMA-ES
 % ref: https://github.com/crucis/CPC881-PSA-CMA-ES
 
     p_theta_t = PSA_buff.p_theta_t;
