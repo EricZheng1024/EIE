@@ -7,8 +7,12 @@ classdef gMOEADGGR_EIE < ALGORITHM
 % Tr --- 0.001 --- The replacement neighborhood size
 % tol --- 0.05 --- Parameter of the EWS method
 % is_EIE --- 1 --- 
-% 
-%   Author: Ruihao Zheng
+
+%------------------------------- Reference --------------------------------
+% "A Generalized Scalarization Method for Evolutionary Multi-objective
+% Optimization"
+% https://github.com/EricZheng1024/MOEA-D-GGR
+%--------------------------------------------------------------------------
 
     methods
         function main(Algorithm,Problem)

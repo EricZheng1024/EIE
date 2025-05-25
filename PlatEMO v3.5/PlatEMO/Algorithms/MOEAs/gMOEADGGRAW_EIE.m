@@ -8,8 +8,12 @@ classdef gMOEADGGRAW_EIE < ALGORITHM
 % alpha_cone --- 0.1 --- Parameter of cone dominance
 % tol --- 0.05 --- Parameter of the EWS method
 % is_EIE --- 1 --- 
-% 
-%   Author: Ruihao Zheng
+
+%------------------------------- Reference --------------------------------
+% "A Generalized Scalarization Method for Evolutionary Multi-objective
+% Optimization"
+% https://github.com/EricZheng1024/MOEA-D-GGR
+%--------------------------------------------------------------------------
 
     methods
         function main(Algorithm,Problem)
